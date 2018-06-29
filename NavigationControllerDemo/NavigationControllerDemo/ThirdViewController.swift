@@ -10,6 +10,8 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    @IBOutlet var txt : UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ThirdViewController : viewDidLoad")
@@ -18,6 +20,7 @@ class ThirdViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("ThirdViewController : viewWillAppear")
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,5 +36,12 @@ class ThirdViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("ThirdViewController : viewDidDisappear")
+    }
+    
+    @IBAction func nextButtonTouchUpInside(_ sender: UIButton) {
+     
+        let fvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FourthViewController") as! FourthViewController
+        fvc.strData = txt.text
+        self.navigationController?.pushViewController(fvc, animated: true)
     }
 }
